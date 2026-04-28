@@ -120,10 +120,19 @@ app.post('/products',(req,res)=>{
   res.json({msg:"product saved succesfully"})
 })
 
-app.post('/signup',()=>{
-  
+
+let formdetails=[]
+
+app.post('/signup',(req,res)=>{
+  const {username,password,email}=req.body
+  let newdetails={username,password,email}
+  formdetails.push(newdetails)
+  res.json({"msg":"registration succesful"})
 })
 
+app.get('/form',(req,res)=>{
+  res.json(formdetails)
+})
 
 
 app.listen(port,()=>{
